@@ -3,7 +3,7 @@ on: [push, pull_request]
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest # Server Ubuntu sudah terinstal Chrome & Chromedriver
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -12,17 +12,22 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: "8.1"
-          coverage: xdebug # Diperlukan untuk Metrik Coverage
+          coverage: xdebug
 
+      # Menambahkan flags untuk mengabaikan kecocokan platform Windows vs Linux
       - name: Install PHP Dependencies
-        run: composer install --prefer-dist --no-progress
+        run: composer install --prefer-dist --no-progress --ignore-platform-reqs
 
       - name: Start PHP Server in Background
         run: php -S localhost:8000 &
 
+      # Menjalankan chromedriver bawaan Ubuntu di background
       - name: Start ChromeDriver in Background
-        run: chromedriver --port=9515 --url-base=wd/hub &
+        run: chromedriver --port=9515 &
+
+      # Memberi jeda 3 detik agar server & chromedriver benar-benar siap sebelum ditimpa pengujian
+      - name: Wait for services
+        run: sleep 3
 
       - name: Run All Automated Tests & Quality Metrics
-        # Mengeksekusi seluruh pengujian di dalam folder tests/ (termasuk SystemTest.php)
         run: vendor/bin/phpunit tests/ --coverage-text
