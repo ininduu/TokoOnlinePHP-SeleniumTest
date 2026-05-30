@@ -1,0 +1,12 @@
+{
+  "PRD-001": {
+    "nama": "Adidas Adizero V5",
+    "harga": 1000000,
+    "stok": 2
+  },
+  "PRD-002": {
+    "nama": "Kaos Polos",
+    "harga": 1000000,
+    "stok": 6
+  }
+}

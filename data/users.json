@@ -1,0 +1,14 @@
+[
+    {
+        "nama": "test",
+        "email": "test@mail.com",
+        "password": "$2y$12$TVNtOBx8xd26kdG\/8soZYOn6osE0hYChf8zFpu4TIztmFYnTZXck6",
+        "role": "admin"
+    },
+    {
+        "nama": "Ferran Torres",
+        "email": "Ferran@gmail.com",
+        "password": "$2y$10$UlLaj7OIpqfc3efCYRlJBuQnL6VBQs4ERLafD3r4cPlBeLbVqF6Z6",
+        "role": "pelanggan"
+    }
+]
