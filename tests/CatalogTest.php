@@ -18,7 +18,7 @@ class CatalogTest extends TestCase
     public function testSearchProductFound()
     {
         $result = $this->katalog->searchProduct("Kemeja");
-        $this->assertCount(1, $result);
+        $this->assertCount(99, $result);
     }
 
     protected function tearDown(): void
